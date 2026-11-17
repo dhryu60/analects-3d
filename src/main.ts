@@ -37,7 +37,7 @@ class LivingAnalectsApp {
   private raycaster = new THREE.Raycaster();
   private pointer = new THREE.Vector2();
 
-  private ambientLight = new THREE.AmbientLight('#ffffff', 0.85);
+  private ambientLight = new THREE.AmbientLight('#ffffff', 1.8);
   private centerPrism!: THREE.Mesh;
   private monolithMeshes: THREE.Mesh[] = [];
 
@@ -54,7 +54,7 @@ class LivingAnalectsApp {
 
   constructor(private container: HTMLElement) {
     this.scene.background = new THREE.Color('#141413');
-    this.scene.fog = new THREE.FogExp2('#141413', 0.035);
+    this.scene.fog = new THREE.FogExp2('#141413', 0.016);
 
     this.camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
     this.camera.position.copy(this.targetCameraPos);
@@ -74,6 +74,12 @@ class LivingAnalectsApp {
     this.controls.addEventListener('start', () => { this.movingCamera = false; });
 
     this.scene.add(this.ambientLight);
+    // Broad neutral lighting keeps inscriptions readable as the view rotates.
+    const keyLight = new THREE.DirectionalLight('#fff3df', 2.4);
+    keyLight.position.set(5, 8, 9);
+    const fillLight = new THREE.DirectionalLight('#e5efff', 1.6);
+    fillLight.position.set(-6, 5, -7);
+    this.scene.add(keyLight, fillLight, new THREE.HemisphereLight('#ffffff', '#544a3c', 0.7));
     this.initDataAndScene().catch((error: unknown) => {
       console.error('Archive initialization failed:', error);
       document.getElementById('load-status')!.textContent = '자료를 불러오지 못했습니다. 인터넷 연결을 확인한 뒤 페이지를 새로고침해 주세요.';
@@ -136,16 +142,16 @@ class LivingAnalectsApp {
     ctx.fillStyle = colorHex;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.strokeStyle = 'rgba(240, 237, 230, 0.4)';
+    ctx.strokeStyle = 'rgba(255, 250, 239, 0.75)';
     ctx.lineWidth = 4;
     ctx.strokeRect(14, 14, canvas.width - 28, canvas.height - 28);
 
-    ctx.fillStyle = '#f0ede6';
+    ctx.fillStyle = '#fffaf0';
     ctx.textAlign = 'center';
     ctx.font = '700 26px "Noto Serif KR", serif';
     ctx.fillText(eraName, canvas.width / 2, 220, canvas.width - 44);
 
-    ctx.fillStyle = 'rgba(240, 237, 230, 0.8)';
+    ctx.fillStyle = '#f0ede6';
     ctx.font = '500 18px "Noto Serif KR", serif';
     ctx.fillText(scholar, canvas.width / 2, 270, canvas.width - 44);
 
@@ -167,6 +173,9 @@ class LivingAnalectsApp {
     const sideMat = new THREE.MeshStandardMaterial({ color: '#2b2927', roughness: 0.7 });
     const faceMat = new THREE.MeshStandardMaterial({
       map: fallbackTexture,
+      emissive: '#ffffff',
+      emissiveMap: fallbackTexture,
+      emissiveIntensity: 0.15,
       bumpMap: fallbackTexture,
       bumpScale: 0.015,
       roughness: 0.45
@@ -186,7 +195,7 @@ class LivingAnalectsApp {
 
     const platform = new THREE.Mesh(
       new THREE.CylinderGeometry(7, 7.5, 0.4, 64),
-      new THREE.MeshStandardMaterial({ color: '#262523', roughness: 0.85 })
+      new THREE.MeshStandardMaterial({ color: '#11110f', roughness: 0.85 })
     );
     platform.position.y = -0.2;
     this.scene.add(platform);
@@ -210,8 +219,12 @@ class LivingAnalectsApp {
       const tex = this.createMonolithTexture(era.name, era.keyText, era.themeColor);
       const mat = new THREE.MeshStandardMaterial({
         map: tex,
-        roughness: 0.55,
-        metalness: 0.15
+        // A small emission floor protects text on the unlit faces.
+        emissive: '#ffffff',
+        emissiveMap: tex,
+        emissiveIntensity: 0.3,
+        roughness: 0.75,
+        metalness: 0.02
       });
       const mesh = new THREE.Mesh(monoGeo, mat);
       mesh.position.set(Math.cos(era.angle) * radius, 1.2, Math.sin(era.angle) * radius);
@@ -300,7 +313,7 @@ class LivingAnalectsApp {
     this.targetLookAt.set(0, 1.4, 0);
     this.movingCamera = true;
     this.ambientLight.color.set('#ffffff');
-    this.ambientLight.intensity = 0.85;
+    this.ambientLight.intensity = 1.8;
     document.querySelectorAll('.era-btn').forEach((button) => button.setAttribute('aria-pressed', 'false'));
     this.previousFocus?.focus();
   }
@@ -316,8 +329,8 @@ class LivingAnalectsApp {
     this.targetLookAt.copy(meshPosition);
     this.movingCamera = true;
 
-    this.ambientLight.color.set(era.themeColor);
-    this.ambientLight.intensity = era.ambientLightIntensity;
+    this.ambientLight.color.set('#ffffff').lerp(new THREE.Color(era.themeColor), 0.1);
+    this.ambientLight.intensity = 1.8 * (0.9 + era.ambientLightIntensity * 0.1);
 
     this.updateOverlayUI(eraId);
     const panel = document.getElementById('overlay-panel')!;

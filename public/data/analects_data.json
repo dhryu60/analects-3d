@@ -8,7 +8,14 @@
     "essayContent": "이천오백 년 전 행단(杏壇)에서 울려 퍼진 공자와 제자들의 문답은 고정된 박제(剝製)가 아니다. 한대의 문헌 복원, 송대의 형이상학적 심화, 조선 실학의 실천적 혁신을 거쳐 오늘날 인공지능 시대에 이르기까지 끊임없이 재해석되며 살아 숨 쉬고 있다. 독락당 디지털 아카이브는 기술을 도구 삼아 고전의 다층적 맥락을 입체적 공간에 펼쳐 보이고, 빠르게 변하는 시대 속에서 변하지 않는 인간다움의 본질을 성찰하고자 한다.",
     "bgmTrack": {
       "title": "J.S. Bach - Cantata BWV 106 'Gottes Zeit ist die allerbeste Zeit' (Sonatina)",
-      "audioUrl": "./assets/audio/bwv106_sonatina.mp3"
+      "audioUrl": "./assets/audio/bwv106_sonatina.mp3",
+      "performer": "Ralph Looij",
+      "arrangement": "Alexandre Guilmant — organ",
+      "recordingYear": 2022,
+      "sourceUrl": "https://imslp.org/wiki/Special:ReverseLookup/815098",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "changes": "Original audio unchanged; filename only"
     }
   },
   "eras": [

@@ -83,6 +83,25 @@ summary { cursor: pointer }
 .verse { display: grid; align-content: start; font-size: clamp(1.35rem,2vw,1.8rem); line-height: 1.65; letter-spacing: .05em }
 .work-body a { font-size: .94rem; color: var(--pine) }
 .work-body .note { margin: 1rem 0; font-size: .94rem }
+.poem-jumps { display: flex; flex-wrap: wrap; gap: .45rem 1.5rem; margin-bottom: 1.5rem; color: var(--pine) }
+.poem-jumps a { padding-block: .3rem }
+.line-reading { max-width: 55rem; margin: 2rem auto; padding-inline: clamp(.25rem, 2vw, 1.5rem) }
+.line-reading h3 { font: 700 clamp(1.25rem, 2vw, 1.6rem)/1.5 var(--serif); scroll-margin-top: 1rem }
+.line-note { margin: .45rem 0 1rem; color: var(--soft); font-size: .93rem }
+.line-entry { border-top: 1px solid var(--line) }
+.line-entry > summary { padding: .75rem .3rem; color: var(--pine) }
+.line-entry > summary [lang="lzh"] { font: 500 1.18rem var(--serif); letter-spacing: .06em }
+.line-number { margin-inline: .35rem .85rem; font-size: .9rem; color: var(--cinnabar) }
+.line-fields { display: grid; grid-template-columns: minmax(9rem, .8fr) 2.7fr; gap: .65rem 1.25rem; margin: 0 0 1rem; padding: 1rem clamp(.85rem, 2vw, 1.5rem); border-left: 2px solid #92a89a; background: #f0f2eb }
+.line-fields dt { font-weight: 600; color: var(--pine) }
+.line-fields dd { margin: 0; min-width: 0 }
+.line-fields ul { margin: 0; padding-inline-start: 1.2em }
+.line-fields li + li { margin-top: .35rem }
+.line-fields dd[lang="lzh"], .old-korean { font: 1.15rem/1.8 var(--serif) }
+@media (max-width: 600px) {
+  .line-fields { grid-template-columns: 1fr; gap: .1rem }
+  .line-fields dd + dt { margin-top: .7rem }
+}
 .chapter:last-child { border-bottom: 0 }
 footer { background: var(--pine); color: #f5f2e7; padding-block: 2.5rem }
 .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.2rem; font-size: .92rem }

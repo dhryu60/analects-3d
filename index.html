@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>論語 입체 사유 공간 | 獨樂堂 디지털 아카이브</title>
-  <meta name="description" content="독락당 디지털 아카이브: 仁·禮·君子를 중심으로 시대별 논어 해석을 탐색하는 입체 사유 공간." />
+  <meta name="description" content="독락당 디지털 아카이브: 시대별 논어 해석과 두시언해의 권별 목차·작품을 탐색합니다." />
   <link rel="icon" href="data:," />
   <style>
     :root {
@@ -124,7 +124,44 @@
       <button class="concept-btn" data-concept="li" aria-pressed="false" disabled>禮 (예)</button>
       <button class="concept-btn" data-concept="junzi" aria-pressed="false" disabled>君子 (군자)</button>
     </div>
+    <button id="open-dusi" class="archive-entry" type="button" aria-haspopup="dialog" aria-controls="dusi-dialog">두시언해 자료 탐색</button>
   </header>
+  <dialog id="dusi-dialog" aria-labelledby="dusi-title" aria-describedby="dusi-intro">
+    <div class="dusi-shell">
+      <div class="dusi-heading">
+        <div><p class="dusi-eyebrow">獨樂堂 · 고전 자료실</p><h1 id="dusi-title">두시언해 자료 탐색</h1><p id="dusi-intro">권별 목차를 살펴보고 세종한글고전의 작품으로 이동합니다.</p></div>
+        <button id="close-dusi" type="button" autofocus>탐색 닫기</button>
+      </div>
+      <div id="dusi-loading" role="status">자료를 불러오는 중입니다…</div>
+      <button id="dusi-retry" type="button" hidden>다시 불러오기</button>
+      <div id="dusi-browser" class="dusi-browser" hidden>
+        <aside class="dusi-sidebar" aria-label="두시언해 권차 선택">
+          <h2>권별 목차</h2>
+          <label for="dusi-toc-status">목차 확인 상태</label>
+          <select id="dusi-toc-status"><option value="all">모든 상태</option><option value="direct_toc_observed">목차 직접 확인</option><option value="partial_search_only">검색 일부 확인</option><option value="unverified">목차 미확인</option></select>
+          <p id="dusi-volume-count" class="dusi-muted"></p>
+          <nav id="dusi-volume-list" aria-label="권별 자료"></nav>
+          <label class="dusi-mobile-volume" for="dusi-volume-select">권차 선택</label>
+          <select id="dusi-volume-select" class="dusi-mobile-volume"></select>
+          <p class="dusi-coverage">권1·4·6·7·9·13은 조사 당시 목록에 없습니다. 원전의 결락을 뜻하지 않습니다.</p>
+        </aside>
+        <section class="dusi-main" aria-label="목차와 작품 목록">
+          <div id="dusi-volume-summary"></div>
+          <p class="dusi-explanation">목차·링크 확인과 본문 확인은 별개입니다. 작품 항목에는 여러 수를 묶은 시와 판본별 중복이 포함됩니다. 외부 자료는 새 탭에서 열립니다.</p>
+          <div class="dusi-filters">
+            <label class="dusi-search">제목·한자·분류 검색<input id="dusi-query" type="search" placeholder="예: 강가, 初月, 누각" autocomplete="off"></label>
+            <label>주제 분류<select id="dusi-category"><option value="all">모든 분류</option></select></label>
+            <label>작품 링크 확인 근거<select id="dusi-evidence"><option value="all">모든 근거</option><option value="direct_toc_observed">목차에서 확인</option><option value="search_index_observed">검색 자료에서 확인</option></select></label>
+          </div>
+          <div class="dusi-result-bar"><p id="dusi-result-count" role="status" aria-live="polite"></p><button id="dusi-reset" type="button">검색·필터 초기화</button></div>
+          <div id="dusi-results"></div>
+          <nav class="dusi-pagination" aria-label="작품 목록 페이지"><button id="dusi-prev" type="button">이전</button><span id="dusi-page" aria-live="polite"></span><button id="dusi-next" type="button">다음</button></nav>
+          <div id="dusi-supplements"></div>
+          <footer class="dusi-footer"><span id="dusi-source-date"></span><a href="./data/sejong-dusi/metadata.json" download>메타데이터 내려받기</a></footer>
+        </section>
+      </div>
+    </div>
+  </dialog>
   <p id="load-status" role="status">사유 공간을 불러오는 중입니다…</p>
   <nav id="era-nav" aria-label="시대별 주석 탐색"></nav>
   <div id="guide-hint">비석 또는 시대 버튼을 선택하면 상세 주석이 열립니다.<br />드래그: 회전 · 스크롤/두 손가락: 확대·축소 · Esc: 주석 닫기</div>

@@ -34,6 +34,10 @@ jobs:
           npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Check withheld catalog is absent
+        run: |
+          test ! -e dist/data/sejong-dusi
+          test ! -e data-sources/sejong-dusi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

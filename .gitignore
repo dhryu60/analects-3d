@@ -7,3 +7,5 @@ dist/
 .DS_Store
 Thumbs.db
 test-results/
+/public/data/sejong-dusi/
+/data-sources/sejong-dusi/

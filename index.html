@@ -133,33 +133,45 @@
         <div><p class="dusi-eyebrow">獨樂堂 · 고전 자료실</p><h1 id="dusi-title">두시언해 자료 탐색</h1><p id="dusi-intro">권별 목차를 살펴보고 세종한글고전의 작품으로 이동합니다. <a href="./dusi-reading.html">두시언해 해설 읽기</a></p></div>
         <button id="close-dusi" type="button" autofocus>탐색 닫기</button>
       </div>
-      <div id="dusi-loading" role="status">자료를 불러오는 중입니다…</div>
-      <button id="dusi-retry" type="button" hidden>다시 불러오기</button>
-      <div id="dusi-browser" class="dusi-browser" hidden>
-        <aside class="dusi-sidebar" aria-label="두시언해 권차 선택">
-          <h2>권별 목차</h2>
-          <label for="dusi-toc-status">목차 확인 상태</label>
-          <select id="dusi-toc-status"><option value="all">모든 상태</option><option value="direct_toc_observed">목차 직접 확인</option><option value="partial_search_only">검색 일부 확인</option><option value="unverified">목차 미확인</option></select>
-          <p id="dusi-volume-count" class="dusi-muted"></p>
-          <nav id="dusi-volume-list" aria-label="권별 자료"></nav>
-          <label class="dusi-mobile-volume" for="dusi-volume-select">권차 선택</label>
-          <select id="dusi-volume-select" class="dusi-mobile-volume"></select>
-          <p class="dusi-coverage">권1·4·6·7·9·13은 조사 당시 목록에 없습니다. 원전의 결락을 뜻하지 않습니다.</p>
-        </aside>
-        <section class="dusi-main" aria-label="목차와 작품 목록">
-          <div id="dusi-volume-summary"></div>
-          <p class="dusi-explanation">목차·링크 확인과 본문 확인은 별개입니다. 작품 항목에는 여러 수를 묶은 시와 판본별 중복이 포함됩니다. 외부 자료는 새 탭에서 열립니다.</p>
-          <div class="dusi-filters">
-            <label class="dusi-search">제목·한자·분류 검색<input id="dusi-query" type="search" placeholder="예: 강가, 初月, 누각" autocomplete="off"></label>
-            <label>주제 분류<select id="dusi-category"><option value="all">모든 분류</option></select></label>
-            <label>작품 링크 확인 근거<select id="dusi-evidence"><option value="all">모든 근거</option><option value="direct_toc_observed">목차에서 확인</option><option value="search_index_observed">검색 자료에서 확인</option></select></label>
-          </div>
-          <div class="dusi-result-bar"><p id="dusi-result-count" role="status" aria-live="polite"></p><button id="dusi-reset" type="button">검색·필터 초기화</button></div>
-          <div id="dusi-results"></div>
-          <nav class="dusi-pagination" aria-label="작품 목록 페이지"><button id="dusi-prev" type="button">이전</button><span id="dusi-page" aria-live="polite"></span><button id="dusi-next" type="button">다음</button></nav>
-          <div id="dusi-supplements"></div>
-          <footer class="dusi-footer"><span id="dusi-source-date"></span><a href="./data/sejong-dusi/metadata.json" download>메타데이터 내려받기</a></footer>
-        </section>
+      <div class="volume-directory">
+        <p>권차를 선택하면 세종한글고전의 해당 목차가 새 탭에서 열립니다. 작품 제목과 분류는 그곳에서 확인할 수 있습니다.</p>
+        <p class="dusi-muted">2026년 11월 19일 조사 기준 · 확인 상태는 해당 권의 목차를 조사한 범위입니다.</p>
+        <section><h2>목차 직접 확인</h2><ul class="volume-links">
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v002_1" target="_blank" rel="noopener noreferrer">권2(상)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v002_2" target="_blank" rel="noopener noreferrer">권2(하)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v003_1" target="_blank" rel="noopener noreferrer">권3(상)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v003_2" target="_blank" rel="noopener noreferrer">권3(하)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v005_1" target="_blank" rel="noopener noreferrer">권5(상)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v005_2" target="_blank" rel="noopener noreferrer">권5(하)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v008_1" target="_blank" rel="noopener noreferrer">권8(상)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v008_2" target="_blank" rel="noopener noreferrer">권8(하)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v010" target="_blank" rel="noopener noreferrer">권10</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v011" target="_blank" rel="noopener noreferrer">권11</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v012_1" target="_blank" rel="noopener noreferrer">권12 · 초간본</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v012_2" target="_blank" rel="noopener noreferrer">권12 · 중간본</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v014" target="_blank" rel="noopener noreferrer">권14</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v015" target="_blank" rel="noopener noreferrer">권15</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v016_1" target="_blank" rel="noopener noreferrer">권16(상)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v016_2" target="_blank" rel="noopener noreferrer">권16(하)</a></li>
+        </ul></section>
+        <section><h2>검색 일부 확인</h2><ul class="volume-links">
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v017" target="_blank" rel="noopener noreferrer">권17</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v019_2" target="_blank" rel="noopener noreferrer">권19(하)</a></li>
+        </ul></section>
+        <section><h2>목차 미확인</h2><ul class="volume-links">
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v018" target="_blank" rel="noopener noreferrer">권18</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v019_1" target="_blank" rel="noopener noreferrer">권19(상)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v020_1" target="_blank" rel="noopener noreferrer">권20(상)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v020_2" target="_blank" rel="noopener noreferrer">권20(하)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v021" target="_blank" rel="noopener noreferrer">권21</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v022" target="_blank" rel="noopener noreferrer">권22</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v023_1" target="_blank" rel="noopener noreferrer">권23(상)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v023_2" target="_blank" rel="noopener noreferrer">권23(하)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v024_1" target="_blank" rel="noopener noreferrer">권24(상)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v024_2" target="_blank" rel="noopener noreferrer">권24(하)</a></li>
+          <li><a href="https://db.sejongkorea.org/front/contentlist.do?bkCode=P51_BD_v025" target="_blank" rel="noopener noreferrer">권25</a></li>
+        </ul></section>
+        <p><a href="https://db.sejongkorea.org/front/booklist.do?bmCode=P51_BD" target="_blank" rel="noopener noreferrer">세종한글고전 전체 자료 목록</a></p>
       </div>
     </div>
   </dialog>

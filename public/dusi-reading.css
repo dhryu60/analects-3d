@@ -64,6 +64,7 @@ h3 { font-size: 1.18rem; margin-bottom: .4rem }
 .editions article, .sample { border-top: 1px solid var(--ink); padding-top: 1rem }
 .editions strong { font: 400 2.5rem/1.4 Georgia, serif; color: var(--pine) }
 .prose p + h3 { margin-top: 1.7rem }
+.prose p + p { margin-top: .85rem }
 .section-lead { max-width: 42rem; margin-bottom: 1.7rem }
 .sample h3 { font-size: 1.42rem }
 .sample h3 small { font-size: 1rem; color: var(--soft); font-weight: 400 }

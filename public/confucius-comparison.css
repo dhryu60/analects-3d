@@ -17,10 +17,11 @@ details[open] > summary { margin-bottom: 1rem }
 .type-label { font-size: .875rem; font-weight: 700; color: var(--soft) }
 blockquote { margin: .8rem 0 1rem; font: 1.25rem/1.8 var(--serif) }
 .canonical blockquote { font-size: 1.8rem }
-.era-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; align-items: stretch }
+.era-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: stretch }
 .era-card { padding: 1.2rem; border: 1px solid var(--line); border-top: 4px solid #8c6d46; background: #fff; min-width: 0; font-family: inherit; display: flex; flex-direction: column }
 .era-card.song { border-top-color: #3a5a6b }
 .era-card.qing { border-top-color: #4a6b53 }
+.era-card.dasan { border-top-color: #6b527c; background: #f8f5fa }
 .era-card.creel { border-top-color: #9a4733; background: #f8f2e8 }
 .era-card details { border-block: 1px solid var(--line); margin: .4rem 0 1rem; padding-block: .4rem }
 .source-note { font-size: .875rem; line-height: 1.8; color: var(--soft) }
@@ -31,6 +32,7 @@ blockquote { margin: .8rem 0 1rem; font: 1.25rem/1.8 var(--serif) }
 .sources { border-top: 1px solid var(--line); padding-top: 1rem }
 .sources li { margin-bottom: 1rem }
 footer { border-top: 1px solid var(--line); padding-block: 2rem; color: var(--soft); font-size: .875rem }
+@media (min-width: 1500px) { .compare-body { width: min(96rem, 94%) } .era-grid { grid-template-columns: repeat(5, minmax(0, 1fr)) } }
 @media (max-width: 1100px) { .era-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
 @media (max-width: 600px) { .era-grid { grid-template-columns: 1fr } .bar { flex-wrap: wrap; padding-block: 1rem } .canonical, .editorial { padding: 1rem } .topic-controls button { flex: 1 1 auto } }
 @media print { .topic-controls, #comparison-status { display: none } .topic[hidden] { display: block } .era-grid { grid-template-columns: 1fr 1fr } .era-card { break-inside: avoid } }

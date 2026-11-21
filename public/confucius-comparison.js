@@ -7,7 +7,7 @@ function showTopic(topic) {
   const selected = ['education', 'politics', 'all'].includes(topic) ? topic : 'education';
   for (const panel of topics) panel.hidden = selected !== 'all' && panel.id !== selected;
   for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.topic === selected));
-  status.textContent = selected === 'all' ? '교육과 정치 참여, 두 주제의 네 관점을 모두 표시합니다.' : `${selected === 'education' ? '교육' : '정치 참여'}에 관한 한·위, 송대, 청대, 크릴의 네 관점을 표시합니다.`;
+  status.textContent = selected === 'all' ? '교육과 정치 참여, 두 주제의 다섯 관점을 모두 표시합니다.' : `${selected === 'education' ? '교육' : '정치 참여'}에 관한 한·위, 송대, 청대, 조선 실학, 크릴의 다섯 관점을 표시합니다.`;
 }
 
 controls.hidden = false;
